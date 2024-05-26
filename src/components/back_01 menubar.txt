@@ -1,0 +1,175 @@
+import React, { useState, } from 'react';
+import './Navbar.css'; // Assuming you have a separate CSS file for styling
+import { Link } from 'react-router-dom';
+import Home from './Home';
+import Work from './Work';
+import About from './About';
+import Contact from './Contact';
+
+const Navbar = () => {
+    // const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem("mode") === "dark-mode");
+    const [isSearchActive, setIsSearchActive] = useState(false);
+    const [isSidebarActive, setIsSidebarActive] = useState(false);
+
+    // useEffect(() => {
+    //     const mode = localStorage.getItem("mode");
+    //     if (mode) {
+    //         setIsDarkMode(mode === "dark-mode");
+    //     }
+    // }, []);
+
+    // const toggleDarkMode = () => {
+    //     const newMode = !isDarkMode;
+    //     setIsDarkMode(newMode);
+    //     localStorage.setItem("mode", newMode ? "dark-mode" : "light-mode");
+    // };
+
+    const toggleSearch = () => {
+        setIsSearchActive(prevState => !prevState);
+    };
+
+    const toggleSidebar = () => {
+        setIsSidebarActive(prevState => !prevState);
+    };
+
+    const closeSidebar = () => {
+        setIsSidebarActive(false);
+    };
+
+    // const handleCombinedClick = () => { 
+    //   closeSidebar();
+    //   handleMenuClick('home');
+    // }; 
+
+    const [activeSection] = useState('home');
+
+    // const handleMenuClick = (section) => {
+    //   // alert(section);
+    //   setActiveSection(section);
+    //   closeSidebar();
+    // };
+
+    const scrollToSection = (sectionId) => {
+      const section = document.getElementById(sectionId);
+      section.scrollIntoView({ behavior: 'smooth' });
+  };
+
+    return (
+      <div className="app">
+        
+        <div className="navbar-container">
+          <nav className={isSidebarActive ? 'active' : ''}>
+            <div className="nav-bar">
+                <i className='bx bx-menu sidebarOpen' onClick={toggleSidebar}></i>
+                <span className="logo navLogo"><a href="#">CodingLab</a></span>
+
+                <div className="menu">
+                    <div className="logo-toggle">
+                        <span className="logo"><a href="#">CodingLab</a></span>
+                        <i className='bx bx-x siderbarClose' onClick={toggleSidebar}></i>
+                    </div>
+
+                    <ul className="nav-links">
+                        <li><Link to="/" onClick={() => { scrollToSection('home'); closeSidebar(); }}>Home</Link></li>
+                        <li><Link to="/work" onClick={() => { scrollToSection('work'); closeSidebar(); }}>Work</Link></li>
+                        <li><Link to="/about" onClick={() => { scrollToSection('about'); closeSidebar(); }}>About</Link></li>
+                        <li><Link to="/contact" onClick={() => { scrollToSection('contact'); closeSidebar(); }}>Contact</Link></li>
+                    </ul>
+
+
+                    {/* <nav> */}
+                      {/* <ul>
+                        <li><a href="#home" onClick={() => handleMenuClick('home')}>Home</a></li>
+                        <li><a href="#work" onClick={() => handleMenuClick('work')}>Work</a></li>
+                        <li><a href="#about" onClick={() => handleMenuClick('about')}>About</a></li>
+                        <li><a href="#contact" onClick={() => handleMenuClick('contact')}>Contact</a></li>
+                      </ul> */}
+                    {/* </nav>  */}
+
+
+                    {/* <ul className="nav-links">
+                        <li><button onClick={() => { scrollToSection('home'); closeSidebar(); }}>Home</button></li>
+                        <li><button onClick={() => { scrollToSection('work'); closeSidebar(); }}>Work</button></li>
+                        <li><button onClick={() => { scrollToSection('about'); closeSidebar(); }}>About</button></li>
+                        <li><button onClick={() => { scrollToSection('contact'); closeSidebar(); }}>Contact</button></li>
+                    </ul> */}
+
+                </div>
+
+                <div className="darkLight-searchBox">
+                    {/* <div className="dark-light" onClick={toggleDarkMode}>
+                        <i className={`bx ${isDarkMode ? 'bx-moon' : 'bx-sun'} moon-sun`}></i>
+                    </div> */}
+
+                    <div className="searchBox">
+                        <div className={`searchToggle ${isSearchActive ? "active" : ""}`} onClick={toggleSearch}>
+                            <i className='bx bx-x cancel'></i>
+                            <i className='bx bx-search search'></i>
+                        </div>
+
+                        <div className={`search-field ${isSearchActive ? "active" : ""}`}>
+                            <input type="text" placeholder="Search..." />
+                            <i className='bx bx-search'></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </nav>
+        </div>
+
+
+        <main className='main_content'>
+        <section id="home" className={`section ${activeSection === 'home' ? 'active' : ''}`}>
+          <Home/>
+        </section>
+        <section id="work" className={`section ${activeSection === 'work' ? 'active' : ''}`}>
+          <Work/>
+        </section>
+        <section id="about" className={`section ${activeSection === 'about' ? 'active' : ''}`}>
+          <About/>
+        </section>
+        <section id="contact" className={`section ${activeSection === 'contact' ? 'active' : ''}`}>
+          <Contact/>
+        </section>
+        </main>
+
+      </div>
+
+        
+
+
+
+    );
+};
+
+export default Navbar;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
