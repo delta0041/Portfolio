@@ -1,5 +1,26 @@
-.Home
+.Home {
+  width: 100%;
+}
+
+.background {
+     
+}
+
+.foreground {
+  background-color: pink;
+}
+
+.btn {
+  background-color: black;
+  pointer-events: all;
+
+}
+
+.abc
 {
-     background-color: red;
-     width: 100%;
+
+}
+
+.btn:hover {
+  background-color: blue;
 }

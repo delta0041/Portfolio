@@ -5,7 +5,6 @@ import Home from './Home';
 import Work from './Work';
 import About from './About';
 import Contact from './Contact';
-import Background from './Background';
 
 const Navbar = () => {
     // const [isSearchActive, setIsSearchActive] = useState(false);
@@ -56,7 +55,7 @@ const Navbar = () => {
     return (
         <div className="app">
 
-            
+
             <div className="navbar-container">
                 <nav className={isSidebarActive ? 'active' : ''}  id="navbar" style={{ position: 'fixed', width: '86%', transition: 'top 0.5s' }}>
                     <div className="nav-bar">
@@ -94,7 +93,6 @@ const Navbar = () => {
                 </nav>
             </div>
             
-            <Background/>
 
             <main className='main_content'>
                 <section id="home" className={`section`}>
@@ -110,9 +108,6 @@ const Navbar = () => {
                     <Contact />
                 </section>
             </main>
-
-
-
 
         </div>
     );

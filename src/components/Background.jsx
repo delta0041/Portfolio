@@ -219,8 +219,9 @@ const Background = () => {
   }, []);
 
   return (
-    <div className="back" style={{ height: '100%', width: '100%', overflow: 'hidden', position: 'absolute', backgroundColor: 'black' }}>
-      <canvas ref={canvasRef} />
+    <div className="back" style={{opacity:0.5, height: '100%', width: '100%', overflow: 'hidden', position: 'absolute', backgroundColor: 'black' }}>
+      <canvas ref={canvasRef}></canvas>
+
     </div>
   );
 };

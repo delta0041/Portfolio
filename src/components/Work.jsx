@@ -3,6 +3,7 @@ import React from 'react'
 export default function Work() {
   return (
     <div>
+      Work1<br></br>
       Work<br></br>
       Work<br></br>
       Work<br></br>
@@ -63,8 +64,7 @@ export default function Work() {
       Work<br></br>
       Work<br></br>
       Work<br></br>
-      Work<br></br>
-      Work<br></br>
+      Work2<br></br>
     </div>
   )
 }
